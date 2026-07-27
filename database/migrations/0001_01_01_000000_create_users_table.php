@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/*every migration file extends the Migration class with an anonymous class (A class that is stored in an object instead of memory)*/
+
 return new class extends Migration
 {
     /**
@@ -16,7 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('google_id')->nullable();
+            $table->string('facebook_id')->nullable();
             $table->string('password');
+            $table->enum('role', ['user', 'admin'])->default('user');
             $table->rememberToken();
             $table->timestamps();
         });
